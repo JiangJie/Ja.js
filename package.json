@@ -1,0 +1,29 @@
+{
+  "name": "Ja.js",
+  "version": "1.0.0",
+  "description": "A Node.js framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node --plugins transform-es2015-modules-commonjs -- src/app.js",
+    "start": "nodemon --strong_mode --harmony --harmony_modules --exec npm run babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JiangJie/Ja.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JiangJie/Ja.js/issues"
+  },
+  "homepage": "https://github.com/JiangJie/Ja.js#readme",
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.3.16"
+  },
+  "dependencies": {
+    "http2": "^3.2.0"
+  }
+}

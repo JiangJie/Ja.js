@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "babel-node": "babel-node --presets es2015 -- src/app.js",
+    "babel-node": "babel-node --presets es2015 --plugins transform-async-to-generator -- src/app.js",
     "start": "nodemon --strong_mode --harmony --harmony_modules --harmony_default_parameters --exec npm run babel-node"
   },
   "repository": {

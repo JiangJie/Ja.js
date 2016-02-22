@@ -2,16 +2,29 @@
 
 import http2 from 'http2';
 
-export default function app(option = {}) {
-    const server = http2.createServer(option, (req, res) => {
-        console.log(`req.httpVersion ${req.httpVersion} req.url ${req.url}`);
+export default function app(option) {
+    const ja = new Ja(option);
 
-        res.writeHead(200);
+    return ja;
+}
 
-        const i = Math.random();
+class Ja {
+    constructor(option = {}) {
+        this.middlewares = [];
 
-        res.end(JSON.stringify({hello: i}));
-    });
+        this.server = http2.createServer(option, this.callback);
 
-    return server;
+        this.listen = this.server.listen.bind(this.server);
+    }
+
+    use(fn) {
+        this.middlewares.push(fn);
+    }
+
+    get callback() {
+        return (req, res) => {
+            const ctx = {req, res};
+            for(const fn of this.middlewares) fn(ctx);
+        }
+    }
 }

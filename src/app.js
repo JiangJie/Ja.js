@@ -10,6 +10,28 @@ const app = Ja({
     cert: fs.readFileSync(path.resolve(__dirname, '../ssl/ja.crt'))
 });
 
+// app.use((req, res) => {
+//     console.log(`req.httpVersion ${req.httpVersion} req.url ${req.url}`);
+
+//     res.writeHead(200);
+
+//     // const i = Math.random();
+//     const i = await Promise.resolve(1);
+
+//     res.end(JSON.stringify({hello: i}));
+// });
+
+app.use(async ({req, res}) => {
+    console.log(`req.httpVersion ${req.httpVersion} req.url ${req.url}`);
+
+    res.writeHead(200);
+
+    // const i = Math.random();
+    const i = await Promise.resolve(1);
+
+    res.end(JSON.stringify({hello: i}));
+});
+
 app.listen(10000, () => {
     console.log('listening');
 });
